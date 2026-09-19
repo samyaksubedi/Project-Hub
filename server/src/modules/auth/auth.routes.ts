@@ -1,0 +1,16 @@
+import { Router } from 'express';
+import * as controller from './auth.controller.js';
+import { authenticate } from '../../middlewares/auth.js';
+import { limiter } from '../../middlewares/limits.js';
+export const authRoutes = Router();
+const emailLimit = limiter(8);
+const loginLimit = limiter(30);
+authRoutes.post('/register', emailLimit, controller.register);
+authRoutes.post('/login', loginLimit, controller.login);
+authRoutes.post('/verify-email', loginLimit, controller.verify);
+authRoutes.post('/resend-verification', emailLimit, controller.resend);
+authRoutes.post('/forgot-password', emailLimit, controller.forgot);
+authRoutes.post('/reset-password', loginLimit, controller.reset);
+authRoutes.post('/refresh', limiter(120), controller.refresh);
+authRoutes.post('/logout', controller.logout);
+authRoutes.get('/me', authenticate, controller.me);
