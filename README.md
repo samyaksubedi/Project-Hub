@@ -2,7 +2,7 @@
 
 A place to show people what you have been creating.
 
-ProjectHub is a student project exhibit for **Thirdspace**. It aggregates screenshots, source code, demos and the people behind a project in a single page, to quickly see what something does before forking its repo.
+ProjectHub is a student project exhibit for **Pixl**. It aggregates screenshots, source code, demos and the people behind a project in a single page, to quickly see what something does before forking its repo.
 
 **Repository:** [github.com/samyaksubedi/Project-Hub](https://github.com/samyaksubedi/Project-Hub)
 
