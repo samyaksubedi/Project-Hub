@@ -13,7 +13,7 @@ WORKDIR /app
 FROM base AS deps
 COPY package.json package-lock.json ./
 COPY prisma ./prisma
-RUN npm ci
+RUN npm ci --include=dev
 
 # 2. Generate the Prisma client and compile TypeScript.
 FROM deps AS build
