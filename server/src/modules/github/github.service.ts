@@ -49,7 +49,7 @@ export const githubService = {
         const parsed = new URL(repositoryUrl.parse(url));
         const path = parsed.pathname.replace(/\/$/, "").replace(/\.git$/, "");
             try {
-                const [raw, rawLanguage] = await Promise.all([
+                const [raw, rawLanguages] = await Promise.all([
                     githubFetch(`/repos${path}`),
                     githubFetch(`/repos${path}/languages`),
                 ]);

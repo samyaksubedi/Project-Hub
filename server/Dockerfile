@@ -17,6 +17,9 @@ RUN npm ci --include=dev
 
 # 2. Generate the Prisma client and compile TypeScript.
 FROM deps AS build
+# prisma.config.ts requires DATABASE_URL; generate doesn't connect, so a placeholder is fine here.
+ARG DATABASE_URL=postgresql://build:build@localhost:5432/build
+ENV DATABASE_URL=$DATABASE_URL
 COPY tsconfig.json prisma.config.ts ./
 COPY src ./src
 RUN npx prisma generate && npm run build
