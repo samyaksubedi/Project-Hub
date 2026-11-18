@@ -24,6 +24,7 @@ if (env.NODE_ENV === 'development') {
 const originAllowed = (origin?: string) =>
   !origin || allowedOrigins.has(origin);
 app.disable('x-powered-by');
+if (env.TRUST_PROXY_HOPS > 0) app.set('trust proxy', env.TRUST_PROXY_HOPS);
 app.use(helmet());
 app.use(
   cors({
